@@ -29,8 +29,8 @@ until game_on == false
         game_board[p2_move-1] = "X"
         count += 1
         display_board(game_board)
-        
-        if count == 8
+
+        if count == 9
             puts "It's a draw game"
             break
         end
