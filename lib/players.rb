@@ -1,3 +1,4 @@
+# rubocop: disable Style/Documentation
 # frozen_string_literal: true
 
 class Player
@@ -14,3 +15,5 @@ class Player
     @mark = 'X'
   end
 end
+
+# rubocop: enable Style/Documentation

@@ -1,3 +1,4 @@
+# rubocop: disable Style/Documentation, Style/GuardClause, Layout/LineLength, Metrics/MethodLength
 # frozen_string_literal: true
 
 module GameLogic
@@ -40,3 +41,4 @@ module GameLogic
     end
   end
 end
+# rubocop: enable Style/Documentation, Style/GuardClause, Layout/LineLength, Metrics/MethodLength

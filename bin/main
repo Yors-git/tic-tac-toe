@@ -1,4 +1,4 @@
-# rubocop: disable Style/MixinUsage
+# rubocop: disable Style/MixinUsage, Style/Documentation
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 require '../lib/game_logic'
@@ -61,4 +61,4 @@ until game_on == false
   break if input != 'Y'
 end
 
-# rubocop: enable Style/MixinUsage
+# rubocop: enable Style/MixinUsage, Style/Documentation
