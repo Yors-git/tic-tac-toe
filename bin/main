@@ -1,49 +1,39 @@
 #!/usr/bin/env ruby
 require "../lib/game_logic"
+require "../lib/players"
 
 include GameLogic
-
-class Player
-    attr_accessor :name 
-    def initialize(name)
-        @name = name
-    end
-end
 
 game_on = true
 until game_on == false
     puts "Player 1 please enter your name"
-    player1 = gets.chomp
+    player1 = Player.new(gets.chomp)
     puts "Player 2 please enter your name"
-    player2 = gets.chomp
+    player2 = Player.new(gets.chomp)
     game_board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     display_board(game_board)
+    active_player = player1
+    mark = player1.player1_mark
     count = 0
     while count < 9
-        puts "Player 1 select the number (1-9) for your move"
-        p1_move = gets.chomp.to_i
-        if valid_input(p1_move) == false
-            puts 'Please enter a valid move, a number between 1 to 9'
+        puts "#{active_player.name} select the number (1-9) for your move"
+        current_move = gets.chomp.to_i
+        if valid_input(current_move, game_board) == false
+            puts 'Please enter a valid move, a number between 1 to 9 and that is not taken already'
+            display_board(game_board)
             next
         end
-        puts repeat_move(p1_move, game_board)
-        game_board[p1_move-1] = "O"
+        game_board[current_move-1] = mark
         count += 1
         display_board(game_board)
-        puts "Player 2 select the number (1-9) for your move"
-        p2_move = gets.chomp.to_i
-        puts valid_input(p2_move)
-        puts repeat_move(p2_move, game_board)
-        game_board[p2_move-1] = "X"
-        count += 1
-        display_board(game_board)
-        # If either player meets the 'WIN condition' (horizontal, vertical, or diagonal), display player1 wins or player2 wins
-        # if # condition == WIN
-        #     puts "#{player1} wins!" # or
-        #     puts "#{player2} wins!"
-        #     game = false # (to stop the loop)
-        # end
-        # Otherwise display the 'DRAW condition'
+        if active_player == player1
+            active_player = player2
+            mark = active_player.player2_mark
+        else
+            active_player = player1
+            mark = active_player.player1_mark
+        end
+
         if count == 9
             puts "It's a draw game"
             break

@@ -6,17 +6,14 @@ module GameLogic
         puts "-----------"
         puts " #{board[6]} | #{board[7]} | #{board[8]} "
     end
-    def winning_cases
 
-    end
-    def valid_input(input)
-        if input == nil || input.is_a?(Integer) == false || (1..9).include?(input)== false
+    def valid_input(input, arr)
+        if (input == nil || input.is_a?(Integer) == false || (1..9).include?(input)== false) || (arr[input-1] == "X" || arr[input-1] == "O")
             false
         end
     end
-    def repeat_move(move, arr)
-        if arr[move].is_a?(String)
-            'Space already taken, please select another move'
-        end
+    
+    def winning_cases
+
     end
 end
