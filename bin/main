@@ -1,26 +1,7 @@
 #!/usr/bin/env ruby
-module GameLogic 
-    def display_board(board)
-        puts " #{board[0]} | #{board[1]} | #{board[2]} "
-        puts "-----------"
-        puts " #{board[3]} | #{board[4]} | #{board[5]} "
-        puts "-----------"
-        puts " #{board[6]} | #{board[7]} | #{board[8]} "
-    end
-    def winning_cases
+require "../lib/game_logic"
 
-    end
-    def valid_input(input)
-        if input == nil || input !is_a?(Integer) || !(1..9).include? input
-            'Please enter a valid move, a number between 1 to 9'
-        end
-    end
-    def repeat_move(move, arr)
-        if arr[move] is_a?(String)
-            'Space already taken, please select another move'
-        end
-    end
-end
+include GameLogic
 
 class Player
     attr_accessor :name 
@@ -41,7 +22,10 @@ until game_on == false
     while count < 9
         puts "Player 1 select the number (1-9) for your move"
         p1_move = gets.chomp.to_i
-        puts valid_input(p1_move)
+        if valid_input(p1_move) == false
+            puts 'Please enter a valid move, a number between 1 to 9'
+            next
+        end
         puts repeat_move(p1_move, game_board)
         game_board[p1_move-1] = "O"
         count += 1
