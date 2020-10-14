@@ -1,49 +1,64 @@
+# rubocop: disable Style/MixinUsage
 #!/usr/bin/env ruby
-require "../lib/game_logic"
-require "../lib/players"
-
+# frozen_string_literal: true
+require '../lib/game_logic'
+require '../lib/players'
 include GameLogic
 
+
+puts 'Welcome to Tic-Tac-Toe'
+sleep(1)
+puts 'Before we start may we know your names'
+sleep(1)
 game_on = true
 until game_on == false
-    puts "Player 1 please enter your name"
-    player1 = Player.new(gets.chomp)
-    puts "Player 2 please enter your name"
-    player2 = Player.new(gets.chomp)
-    game_board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    display_board(game_board)
-    active_player = player1
-    mark = player1.player1_mark
-    count = 0
-    while count < 9
-        puts "#{active_player.name} select the number (1-9) for your move"
-        current_move = gets.chomp.to_i
-        if valid_input(current_move, game_board) == false
-            puts 'Please enter a valid move, a number between 1 to 9 and that is not taken already'
-            display_board(game_board)
-            next
-        end
-        game_board[current_move-1] = mark
-        count += 1
-        display_board(game_board)
-        if active_player == player1
-            active_player = player2
-            mark = active_player.player2_mark
-        else
-            active_player = player1
-            mark = active_player.player1_mark
-        end
+  puts 'Player 1 please enter your name'
+  player1 = Player.new(gets.chomp)
+  puts 'Player 2 please enter your name'
+  player2 = Player.new(gets.chomp)
+  game_board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  display_board(game_board)
+  active_player = player1
+  mark = player1.player1_mark
+  count = 0
+  while count < 9
+    puts "#{active_player.name} select the number (1-9) for your move"
+    current_move = gets.chomp.to_i
+    if valid_input(current_move, game_board) == false
+      puts 'Please enter a valid move, a number between 1 to 9 and that is not taken already'
+      display_board(game_board)
+      next
+    end
+    game_board[current_move - 1] = mark
+    count += 1
 
-        if count == 9
-            puts "It's a draw game"
-            break
-        end
+    if active_player == player1
+      active_player = player2
+      mark = active_player.player2_mark
+    else
+      active_player = player1
+      mark = active_player.player1_mark
     end
-    # puts "#{winner} you won!"
-    puts "Play again? press \"Y\" or press any other key to quit"
-    input = gets.chomp.upcase
-    if input == "Y"
-        game_on = true
+    if winning_cases(game_board) == 'X'
+      puts "#{player2.name} won, congrats"
+      display_board(game_board)
+      break
+    elsif winning_cases(game_board) == 'O'
+      puts "#{player1.name} won, congrats"
+      display_board(game_board)
+      break
+    else
+      display_board(game_board)
     end
-    break if input != "Y"
+    if count == 9
+      puts "It's a draw game"
+      break
+    end
+  end
+  puts 'Play again? press "Y" or press any other key to quit'
+  input = gets.chomp.upcase
+  game_on = true if input == 'Y'
+  break if input != 'Y'
 end
+
+# rubocop: enable Style/MixinUsage
