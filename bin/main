@@ -1,10 +1,6 @@
 #!/usr/bin/env ruby
-# rubocop: disable Style/MixinUsage
-# frozen_string_literal: true
-
 require_relative '../lib/game_logic'
 require_relative '../lib/players'
-include GameLogic
 
 puts 'Welcome to Tic-Tac-Toe'
 sleep(1)
@@ -17,21 +13,21 @@ until game_on == false
   puts 'Player 2 please enter your name'
   player2 = Player.new(gets.chomp)
   game_board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-  display_board(game_board)
+  GameLogic.display_board(game_board)
   active_player = player1
   mark = player1.player1_mark
   count = 0
   while count < 9
     puts "#{active_player.name} select the number (1-9) for your move"
     current_move = gets.chomp.to_i
-    if valid_input(current_move, game_board) == false
+    if GameLogic.valid_input(current_move, game_board) == false
       puts 'Please enter a valid move, a number between 1 to 9 and that is not taken already'
-      display_board(game_board)
+      GameLogic.display_board(game_board)
       next
     end
     game_board[current_move - 1] = mark
     count += 1
-    display_board(game_board)
+    GameLogic.display_board(game_board)
     if active_player == player1
       active_player = player2
       mark = active_player.player2_mark
@@ -39,13 +35,14 @@ until game_on == false
       active_player = player1
       mark = active_player.player1_mark
     end
-    if winning_cases(game_board) == 'X'
+    case GameLogic.winning_cases(game_board)
+    when 'X'
       puts "#{player2.name} won, congrats"
-      display_board(game_board)
+      GameLogic.display_board(game_board)
       break
-    elsif winning_cases(game_board) == 'O'
+    when 'O'
       puts "#{player1.name} won, congrats"
-      display_board(game_board)
+      GameLogic.display_board(game_board)
       break
     end
     if count == 9
@@ -58,5 +55,3 @@ until game_on == false
   game_on = true if input == 'Y'
   break if input != 'Y'
 end
-
-# rubocop: enable Style/MixinUsage
