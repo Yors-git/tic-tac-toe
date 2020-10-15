@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
-# rubocop: disable Style/MixinUsage, Style/Documentation
+# rubocop: disable Style/MixinUsage
 # frozen_string_literal: true
+
 require_relative '../lib/game_logic'
 require_relative '../lib/players'
 include GameLogic
-
 
 puts 'Welcome to Tic-Tac-Toe'
 sleep(1)
@@ -59,4 +59,4 @@ until game_on == false
   break if input != 'Y'
 end
 
-# rubocop: enable Style/MixinUsage, Style/Documentation
+# rubocop: enable Style/MixinUsage
