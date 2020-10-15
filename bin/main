@@ -9,7 +9,7 @@ sleep(1)
 
 game_on = true
 
-until game_on == false
+while game_on
   puts 'Player 1 please enter your name'
   player1 = Player.new(gets.chomp)
   until player1.valid_name?
@@ -23,8 +23,8 @@ until game_on == false
     player2.name = gets.chomp
   end
   puts
-  game_board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-  puts GameLogic.display_board(game_board)
+  on_going_game = GameLogic.new
+  puts on_going_game.display_board
   active_player = player1
   mark = player1.player1_mark
 
@@ -36,17 +36,17 @@ until game_on == false
     puts
     current_move = gets.chomp.to_i
 
-    if GameLogic.valid_input?(current_move, game_board) == false
+    if on_going_game.valid_input?(current_move) == false
       puts
       puts 'Please enter a valid move, a number between 1 to 9 and that is not taken already'
       puts
-      puts GameLogic.display_board(game_board)
+      puts on_going_game.display_board
       next
     end
 
-    game_board[current_move - 1] = mark
+    on_going_game.board[current_move - 1] = mark
     count += 1
-    puts GameLogic.display_board(game_board)
+    puts on_going_game.display_board
     puts
 
     if active_player == player1
@@ -57,16 +57,16 @@ until game_on == false
       mark = active_player.player1_mark
     end
 
-    case GameLogic.winning_cases(game_board)
+    case on_going_game.winning_cases
     when 'X'
       puts "#{player2.name} won, congrats"
       puts
-      puts GameLogic.display_board(game_board)
+      puts on_going_game.display_board
       break
     when 'O'
       puts "#{player1.name} won, congrats"
       puts
-      puts GameLogic.display_board(game_board)
+      puts on_going_game.display_board
       break
     end
 

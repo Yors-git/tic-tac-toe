@@ -14,6 +14,6 @@ class Player
   end
 
   def valid_name?
-    @name.length >= 1
+    @name.length > 2
   end
 end
