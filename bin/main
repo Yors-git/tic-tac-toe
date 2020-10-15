@@ -1,8 +1,8 @@
-# rubocop: disable Style/MixinUsage, Style/Documentation
 #!/usr/bin/env ruby
+# rubocop: disable Style/MixinUsage, Style/Documentation
 # frozen_string_literal: true
-require '../lib/game_logic'
-require '../lib/players'
+require_relative '../lib/game_logic'
+require_relative '../lib/players'
 include GameLogic
 
 
@@ -31,7 +31,7 @@ until game_on == false
     end
     game_board[current_move - 1] = mark
     count += 1
-
+    display_board(game_board)
     if active_player == player1
       active_player = player2
       mark = active_player.player2_mark
@@ -47,8 +47,6 @@ until game_on == false
       puts "#{player1.name} won, congrats"
       display_board(game_board)
       break
-    else
-      display_board(game_board)
     end
     if count == 9
       puts "It's a draw game"
