@@ -12,4 +12,8 @@ class Player
   def player2_mark
     @mark = 'X'
   end
+
+  def valid_name?
+    @name.length >= 1
+  end
 end
