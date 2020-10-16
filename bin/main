@@ -1,53 +1,85 @@
 #!/usr/bin/env ruby
-def display_board(board)
-    puts " #{board[0]} | #{board[1]} | #{board[2]} "
-    puts "-----------"
-    puts " #{board[3]} | #{board[4]} | #{board[5]} "
-    puts "-----------"
-    puts " #{board[6]} | #{board[7]} | #{board[8]} "
-end
+require_relative '../lib/game_logic'
+require_relative '../lib/players'
+
+puts 'Welcome to Tic-Tac-Toe'
+sleep(1)
+puts 'Before we start may we know your names'
+sleep(1)
 
 game_on = true
-until game_on == false
-    puts "Player 1 please enter your name"
-    player1 = gets.chomp
-    puts "Player 2 please enter your name"
-    player2 = gets.chomp
-    game_board = [1,2,3,4,5,6,7,8,9]
-    display_board(game_board)
-    count = 0
-    while count < 9
-        puts "Player 1 select the number (1-9) for your move"
-        p1_move = gets.chomp.to_i
-        #Check if input is valid otherwise display next line
-        puts "Please enter valid move, number between (1-9)"
-        game_board[p1_move-1] = "O"
-        count += 1
-        display_board(game_board)
-        puts "Player 2 select the number (1-9) for your move"
-        p2_move = gets.chomp.to_i
-        #Check if input is valid otherwise display next line
-        puts "Please enter valid move, number between (1-9)"
-        game_board[p2_move-1] = "X"
-        count += 1
-        display_board(game_board)
-        # If either player meets the 'WIN condition' (horizontal, vertical, or diagonal), display player1 wins or player2 wins
-        # if # condition == WIN
-        #     puts "#{player1} wins!" # or
-        #     puts "#{player2} wins!"
-        #     game = false # (to stop the loop)
-        # end
-        # Otherwise display the 'DRAW condition'
-        if count == 8
-            puts "It's a draw game"
-            break
-        end
+
+while game_on
+  puts 'Player 1 please enter your name'
+  player1 = Player.new(gets.chomp)
+  until player1.valid_name?
+    puts 'Please enter a valid name'
+    player1.name = gets.chomp
+  end
+  puts 'Player 2 please enter your name'
+  player2 = Player.new(gets.chomp)
+  until player2.valid_name?
+    puts 'Please enter a valid name'
+    player2.name = gets.chomp
+  end
+  puts
+  on_going_game = GameLogic.new
+  puts on_going_game.display_board
+  active_player = player1
+  mark = player1.player1_mark
+
+  count = 0
+
+  while count < 9
+    puts
+    puts "#{active_player.name} select the number (1-9) for your move"
+    puts
+    current_move = gets.chomp.to_i
+
+    if on_going_game.valid_input?(current_move) == false
+      puts
+      puts 'Please enter a valid move, a number between 1 to 9 and that is not taken already'
+      puts
+      puts on_going_game.display_board
+      next
     end
-    # puts "#{winner} you won!"
-    puts "Play again? press \"Y\" or press any other key to quit"
-    input = gets.chomp.upcase
-    if input == "Y"
-        game_on = true
+
+    on_going_game.board[current_move - 1] = mark
+    count += 1
+    puts on_going_game.display_board
+    puts
+
+    if active_player == player1
+      active_player = player2
+      mark = active_player.player2_mark
+    else
+      active_player = player1
+      mark = active_player.player1_mark
     end
-    break if input != "Y"
+
+    case on_going_game.winning_cases
+    when 'X'
+      puts "#{player2.name} won, congrats"
+      puts
+      puts on_going_game.display_board
+      break
+    when 'O'
+      puts "#{player1.name} won, congrats"
+      puts
+      puts on_going_game.display_board
+      break
+    end
+
+    if count == 9
+      puts "It's a draw game"
+      break
+    end
+
+  end
+
+  puts
+  puts 'Play again? press "Y" or press any other key to quit'
+  input = gets.chomp.upcase
+  game_on = true if input == 'Y'
+  break if input != 'Y'
 end
