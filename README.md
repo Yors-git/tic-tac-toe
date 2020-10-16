@@ -56,9 +56,16 @@ $ git clone https://github.com/Yors-git/tic-tac-toe
 
 👤 **Ceejayski**
 
-- [@Ceejayski](https://github.com/Ceejayski)
+- Github: [@Ceejayski](https://github.com/Ceejayski)
 
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/chijioke-okoli-b0397a168/)
+
+
+👤 **Jorge Torres**
+
+- Github: [@Yors-git](https://github.com/Yors-git)
+
+- Twitter: [@Yors_82](https://twitter.com/Yors_82)
 
 
 ## Show your support
