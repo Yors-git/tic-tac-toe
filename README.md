@@ -9,9 +9,9 @@
 - Instruction for players
 
 
-# Game Rule:
-Tic Tac Toe is Cool Math Games:
-Xs and Os is a paper-and-pencil game for two players, X, O:
+# Game Rules:
+Tic Tac Toe is Cool Math Game:
+Each player is assigned either the X or the O symbol:
 * Players take turns filing the spaces in 3X3 grid.
 * The player who succeeds in placing three of their marks in the horizontal, vertical, or diagonal or wins the game.
 
@@ -29,6 +29,16 @@ the following example game is won by the first player, X:
      ├── game_logic.rb
 
 ```
+
+## Prerequisites
+-  Text editor
+-  Github profile
+-  Git and Ruby.
+-  Rubocop
+
+## Installations
+
+- Firstly, in order to run this on your local machine, you are going to need ruby already setup on your machine, so click this [link](https://rubyinstaller.org/) if you don't have ruby already installed and download for your specific machine.
 
 ## How to Run the Game
 
