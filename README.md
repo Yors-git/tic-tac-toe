@@ -1,8 +1,6 @@
 #  Tic Tac Toe OOP build with Ruby (Object Oriented Programming)
 * Original project specification at [The Odin Project] (https://www.theodinproject/lesseons/oop)
-* The purpose of the project is to master object oriented programming with ruby. 
-
-*![image](./tic-tac.gif)
+* The purpose of the project is to master object oriented programming in ruby.
 
 # This project has four milestones
 - Project setup
@@ -20,10 +18,6 @@ Xs and Os is a paper-and-pencil game for two players, X, O:
 the following example game is won by the first player, X:
 ![example](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Tic-tac-toe-game-1.svg/1280px-Tic-tac-toe-game-1.svg.png)
 
-## Instructions
-
-**Run `bundle` within this lab's directory before getting started.**
-
 ### Project Structure
 
 ```bash 
@@ -31,7 +25,7 @@ the following example game is won by the first player, X:
 ├── bin
 │   └── main.rb
 ├── lib
-│    ├── player.rb
+     ├── player.rb
      ├── game_logic.rb
 
 ```
@@ -40,9 +34,13 @@ the following example game is won by the first player, X:
 
 
 
+```
+$ git clone https://github.com/Yors-git/tic-tac-toe
+```
+
 - Open your git bash and clone the repo.
 
-- go to the diroctory of the file and run ruby "main.rb" or "main"
+- go to the directory of the file and run ruby "main.rb" or "main"
 
 - Good job you are now playing Tic-Tac-Toe game. 👌🙌
 
@@ -55,6 +53,12 @@ the following example game is won by the first player, X:
 - To cancel the game in the middle of it, hit CTRL + C on the keyboard. 
   
 ## Authors:
+
+👤 **Ceejayski**
+
+- [@Ceejayski](https://github.com/Ceejayski)
+
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/chijioke-okoli-b0397a168/)
 
 
 ## Show your support
