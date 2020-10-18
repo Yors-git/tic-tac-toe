@@ -1,0 +1,85 @@
+#!/usr/bin/env ruby
+require_relative '../lib/game_logic'
+require_relative '../lib/players'
+
+puts 'Welcome to Tic-Tac-Toe'
+sleep(1)
+puts 'Before we start may we know your names'
+sleep(1)
+
+game_on = true
+
+while game_on
+  puts 'Player 1 please enter your name'
+  player1 = Player.new(gets.chomp)
+  until player1.valid_name?
+    puts 'Please enter a valid name'
+    player1.name = gets.chomp
+  end
+  puts 'Player 2 please enter your name'
+  player2 = Player.new(gets.chomp)
+  until player2.valid_name?
+    puts 'Please enter a valid name'
+    player2.name = gets.chomp
+  end
+  puts
+  on_going_game = GameLogic.new
+  puts on_going_game.display_board
+  active_player = player1
+  mark = player1.player1_mark
+
+  count = 0
+
+  while count < 9
+    puts
+    puts "#{active_player.name} select the number (1-9) for your move"
+    puts
+    current_move = gets.chomp.to_i
+
+    if on_going_game.valid_input?(current_move) == false
+      puts
+      puts 'Please enter a valid move, a number between 1 to 9 and that is not taken already'
+      puts
+      puts on_going_game.display_board
+      next
+    end
+
+    on_going_game.board[current_move - 1] = mark
+    count += 1
+    puts on_going_game.display_board
+    puts
+
+    if active_player == player1
+      active_player = player2
+      mark = active_player.player2_mark
+    else
+      active_player = player1
+      mark = active_player.player1_mark
+    end
+
+    case on_going_game.winning_cases
+    when 'X'
+      puts "#{player2.name} won, congrats"
+      puts
+      puts on_going_game.display_board
+      break
+    when 'O'
+      puts "#{player1.name} won, congrats"
+      puts
+      puts on_going_game.display_board
+      break
+    end
+
+    if count == 9
+      puts "It's a draw game"
+      break
+    end
+
+  end
+
+  puts
+  puts 'Play again? press "Y" or press any other key to quit'
+  input = gets.chomp.upcase
+  game_on = true if input == 'Y'
+  break if input != 'Y'
+end
