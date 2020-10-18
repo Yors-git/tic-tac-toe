@@ -50,7 +50,9 @@ $ git clone https://github.com/Yors-git/tic-tac-toe
 
 - Open your git bash and clone the repo.
 
-- go to the directory of the file and run ruby "main.rb" or "main"
+- cd tic-tac-toe
+
+- ruby bin/main.rb | ./bin/main
 
 - Good job you are now playing Tic-Tac-Toe game. 👌🙌
 
@@ -76,6 +78,8 @@ $ git clone https://github.com/Yors-git/tic-tac-toe
 - Github: [@Yors-git](https://github.com/Yors-git)
 
 - Twitter: [@Yors_82](https://twitter.com/Yors_82)
+
+- LinkedIn: [Jorge Torres](https://www.linkedin.com/in/jorge-torres-8b87571a8/)
 
 
 ## Show your support
