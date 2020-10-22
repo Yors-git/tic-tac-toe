@@ -70,8 +70,7 @@ while game_on
       break
     end
 
-    if count == 9
-      puts "It's a draw game"
+    if on_going_game.tie_case(count)
       break
     end
 
