@@ -1,4 +1,4 @@
-require_relative '../lib/game_logic.rb'
+require_relative '../lib/game_logic'
 
 describe GameLogic do
   describe '#display_board' do
@@ -38,6 +38,16 @@ describe GameLogic do
       puts win_case.display_board
       puts win_case.winning_cases
       expect(win_case.winning_cases).to eql('X')
+    end
+
+    it 'checks the case of not winning move' do
+      win_case = GameLogic.new
+      win_case.board[3] = 'O'
+      win_case.board[4] = 'X'
+      win_case.board[5] = 'X'
+      puts win_case.display_board
+      puts win_case.winning_cases
+      expect(win_case.winning_cases).to eql(nil)
     end
   end
 end
