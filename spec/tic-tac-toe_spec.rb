@@ -30,19 +30,13 @@ describe GameLogic do
   end
 
   describe "#winning_cases" do
-    let(:CASES) {[
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6]
-    ]}
-    let(:board) {%w['X' 'X' 'X' 'X' 'X' 'X' 'X' 'X' 'X']}
     it "checks the case of XXX" do
       win_case = GameLogic.new
+      win_case.board[3] = "X"
+      win_case.board[4] = "X"
+      win_case.board[5] = "X"
+      puts win_case.display_board
+      puts win_case.winning_cases
       expect(win_case.winning_cases).to eql('X')
     end
   end
