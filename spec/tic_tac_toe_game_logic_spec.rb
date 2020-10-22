@@ -50,4 +50,12 @@ describe GameLogic do
       expect(win_case.winning_cases).to eql(nil)
     end
   end
+
+  describe '#tie_case' do
+    it 'checks the case of a tie' do
+      tie_case = GameLogic.new
+      expect(tie_case.tie_case(9)).to eql(true)
+    end
+  end
+  
 end

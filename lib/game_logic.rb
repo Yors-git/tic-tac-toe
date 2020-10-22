@@ -47,7 +47,7 @@ class GameLogic
 
   def tie_case(num)
     if num == 9 
-      puts "Its a tie!"
+      true
     end
   end
 end

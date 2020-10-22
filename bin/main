@@ -71,7 +71,10 @@ while game_on
     end
 
     if on_going_game.tie_case(count)
+      puts 'It\'s a tie!'
       break
+    else
+      next
     end
 
   end
