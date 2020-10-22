@@ -57,5 +57,4 @@ describe GameLogic do
       expect(tie_case.tie_case(9)).to eql(true)
     end
   end
-  
 end

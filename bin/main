@@ -1,3 +1,4 @@
+# rubocop: enable Style/GuardClause
 #!/usr/bin/env ruby
 require_relative '../lib/game_logic'
 require_relative '../lib/players'
@@ -85,3 +86,4 @@ while game_on
   game_on = true if input == 'Y'
   break if input != 'Y'
 end
+# rubocop: enable Style/GuardClause
