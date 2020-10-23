@@ -35,8 +35,8 @@ describe GameLogic do
       win_case.board[3] = 'X'
       win_case.board[4] = 'X'
       win_case.board[5] = 'X'
-      puts win_case.display_board
-      puts win_case.winning_cases
+      win_case.display_board
+      win_case.winning_cases
       expect(win_case.winning_cases).to eql('X')
     end
 
@@ -45,8 +45,8 @@ describe GameLogic do
       win_case.board[3] = 'O'
       win_case.board[4] = 'X'
       win_case.board[5] = 'X'
-      puts win_case.display_board
-      puts win_case.winning_cases
+      win_case.display_board
+      win_case.winning_cases
       expect(win_case.winning_cases).to eql(nil)
     end
   end
