@@ -1,3 +1,4 @@
+# rubocop: enable Style/GuardClause
 #!/usr/bin/env ruby
 require_relative '../lib/game_logic'
 require_relative '../lib/players'
@@ -70,9 +71,11 @@ while game_on
       break
     end
 
-    if count == 9
-      puts "It's a draw game"
+    if on_going_game.tie_case(count)
+      puts 'It\'s a tie!'
       break
+    else
+      next
     end
 
   end
@@ -83,3 +86,4 @@ while game_on
   game_on = true if input == 'Y'
   break if input != 'Y'
 end
+# rubocop: enable Style/GuardClause

@@ -44,4 +44,8 @@ class GameLogic
     end
     win
   end
+
+  def tie_case(num)
+    true if num == 9
+  end
 end
