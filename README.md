@@ -79,7 +79,7 @@ $ git clone https://github.com/Yors-git/tic-tac-toe
 
 - Twitter: [@Yors_82](https://twitter.com/Yors_82)
 
-- LinkedIn: [Jorge Torres](https://www.linkedin.com/in/jorge-torres-8b87571a8/)
+- Linkedin: [Jorge Torres](https://www.linkedin.com/in/jtbribiesca/)
 
 
 ## Show your support
